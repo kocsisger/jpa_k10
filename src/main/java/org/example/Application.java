@@ -15,12 +15,9 @@ public class Application {
                 Persistence.createEntityManagerFactory("br.com.fredericci.pu");
         final EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-        Customer customer = new Customer();
-        customer.setFirstName("Dennys");
-        customer.setLastName("Fredericci");
-
+        Animal a = new Animal("zebra", 15, Animal.GenderType.UNKNOWN);
         entityManager.getTransaction().begin();
-        entityManager.persist(customer);
+        entityManager.persist(a);
         entityManager.getTransaction().commit();
 
         System.out.println("Open your browser and navigate to http://localhost:8082/");
