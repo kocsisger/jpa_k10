@@ -12,14 +12,8 @@ public class Application {
         startDatabase();
 
         AnimalDAO animalDAO = new JpaAnimalDAO();
-        Animal a = new Animal("zebra", 15, Animal.GenderType.UNKNOWN);
-        animalDAO.saveAnimal(a);
-        Animal b = new Animal("antilop", 1, Animal.GenderType.MALE);
-        animalDAO.saveAnimal(b);
-
-        for(Animal animal : animalDAO.getAnimals()){
-            System.out.println(animal);
-        }
+        AnimalManager animalManager = new AnimalManager(animalDAO);
+        animalManager.manage();
 
         System.out.println("Open your browser and navigate to http://localhost:8082/");
         System.out.println("JDBC URL: jdbc:h2:mem:my_database");
