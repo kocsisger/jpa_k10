@@ -11,9 +11,12 @@ public class Application {
     public static void main(String[] args) throws SQLException {
         startDatabase();
 
-        AnimalDAO animalDAO = new JpaAnimalDAO();
-        AnimalManager animalManager = new AnimalManager(animalDAO);
-        animalManager.manage();
+        try (AnimalDAO animalDAO = new JpaAnimalDAO()) {
+            AnimalManager animalManager = new AnimalManager(animalDAO);
+            animalManager.manage();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         System.out.println("Open your browser and navigate to http://localhost:8082/");
         System.out.println("JDBC URL: jdbc:h2:mem:my_database");
