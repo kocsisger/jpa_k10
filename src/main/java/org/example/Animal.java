@@ -58,4 +58,15 @@ public class Animal {
     public void setGender(GenderType gender) {
         this.gender = gender;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Animal{");
+        sb.append("id=").append(id);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", age=").append(age);
+        sb.append(", gender=").append(gender);
+        sb.append('}');
+        return sb.toString();
+    }
 }
